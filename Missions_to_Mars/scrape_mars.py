@@ -107,7 +107,7 @@ hemisphere_soup = bs(hemisphere_html, 'html.parser')
 all_mars_hemispheres = hemisphere_soup.find('div', class_='collapsible results')
 mars_hemispheres = all_mars_hemispheres.find_all('div', class_='item')
 
-hemisphere_image_urls = []
+mars_hemi = []
 # Iterate through each hemisphere data
 for i in mars_hemispheres:
     # Collect Title
@@ -116,7 +116,6 @@ for i in mars_hemispheres:
     #Collect image link by browsing to hemisphere page
     hemisphere_link = hemisphere.a["href"]
     #print (hemisphere_link)
-    #browser = Browser('chrome', **executable_path, headless=False)
     browser.visit(astr_usgs_url + hemisphere_link)
     image_html = browser.html
     image_soup = bs(image_html, 'html.parser')
@@ -126,10 +125,9 @@ for i in mars_hemispheres:
     image_dict = {}
     image_dict['title'] = title
     image_dict['img_url'] = image_url
-    hemisphere_image_urls.append(image_dict)  
-   
+    mars_hemi.append(image_dict)  
 
-#print (hemisphere_image_urls) 
+#print (mars_hemi) 
 
 
 

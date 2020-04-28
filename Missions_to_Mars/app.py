@@ -7,8 +7,8 @@ import scrape_mars
 # create instance of Flask app
 app = Flask(__name__)
 
-
-mongo = PyMongo(app)
+# Use PyMongo to establish Mongo connection
+mongo = PyMongo(app, uri="mongodb://localhost:27017/weather_app")
 
 #  create route that renders index.html template
 @app.route("/")
